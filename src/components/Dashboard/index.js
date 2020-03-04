@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import {
   Typography,
   Paper,
   Avatar,
-  CircularProgress,
   Button
 } from "@material-ui/core";
 import VerifiedUserOutlined from "@material-ui/icons/VerifiedUserOutlined";
@@ -21,23 +20,17 @@ function Dashboard(props) {
     return null;
   }
 
-  const [quote, setQuote] = useState("");
-
-  useEffect(() => {
-    firebase.getCurrentUserQuote().then(setQuote);
-  });
-
   return (
     <main className={classes.main}>
       <Paper className={classes.paper}>
         <Avatar className={classes.avatar}>
           <VerifiedUserOutlined />
         </Avatar>
-        <Typography component="h1" variant="h5">
+        <Typography component="h1" variant="h5" gutterBottom>
           Hello {firebase.getCurrentUsername()}
         </Typography>
-        <Typography component="h1" variant="h5">
-          Your quote: {quote ? `"${quote}"` : <CircularProgress size={20} />}
+        <Typography variant="subtitle" gutterBottom>
+          This is the dashboard
         </Typography>
         <Button
           type="submit"
